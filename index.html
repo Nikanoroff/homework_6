@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <title>HomeWork_6</title>
+
+   <link rel="stylesheet" href="style.css">
+
+   <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14"></script>
+</head>
+
+<body>
+
+   <div id="app">
+
+      <basket-card v-if="basketCardVision" text-header="New Header">
+
+         <basket-goods-item v-for="item in goods" :item="item">
+
+         </basket-goods-item>
+
+         <template v-slot:header>
+            <custom-button @click="closeCard">Закрыть</custom-button>
+            Корзина
+         </template>
+
+         <template v-slot:footer>
+            <div>Footer</div>
+         </template>
+
+      </basket-card>
+
+
+      <div class="header">
+         <div>
+            Web-site
+         </div>
+
+         <div class="right-container">
+            <input type="text" v-model="search">
+            <button @click="filterGoods">Отсортировать</button>
+            <custom-button @click="openCard">Корзина</custom-button>
+         </div>
+
+      </div>
+
+
+      <div class="body">
+         <goods-item v-for="item in filteredGoods" :item="item"></goods-item>
+      </div>
+
+
+   </div>
+
+   <script src="script.js"></script>
+
+</body>
+
+</html>
